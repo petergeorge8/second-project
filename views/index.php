@@ -11,7 +11,7 @@
 <body>
     Home Page <br>
     <form action="/transactions" method="post" enctype="multipart/form-data">
-        file: <input type="file" name="csvFile" accept=".csv,.xlsx">
+        file: <input type="file" name="csv_file" accept=".csv,.xlsx">
         <button type="submit">Submit</button>
     </form>
 </body>

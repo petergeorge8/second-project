@@ -39,4 +39,11 @@ class TransactionsModel extends \App\Model
         $stmt = $this->db->prepare('TRUNCATE TABLE transactions');
         $stmt->execute();
     }
+    public function selectAllTransactionsAmount(): array
+    {
+        $stmt = $this->db->prepare('SELECT amount FROM transactions');
+        $stmt->execute();
+        $transactionsAmount = $stmt->fetchAll();
+        return $transactionsAmount;
+    }
 }

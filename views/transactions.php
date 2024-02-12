@@ -48,21 +48,13 @@
                 foreach ($transactionsData as $key => $row) :
                 ?>
                     <tr>
-                        <td><?= date('M j, Y', strtotime($row['date'])) ?></td>
+                        <td><?= $row['date'] ?></td>
                         <td><?= $row['check_num'] ?></td>
                         <td><?= $row['description'] ?></td>
+                        <td style="color:
                         <?php
-                        $bool = false;
-
-                        if ((int) $row['amount'] < 0) {
-                            $bool = true;
-                            $amount = '-' . '$' . abs($row['amount']);
-                        } else {
-                            $amount = '$' . abs($row['amount']);
-                        }
-
-                        ?>
-                        <td style="color:<?php echo $bool ? 'red' : 'green'; ?>;"><?= $amount ?></td>
+                        echo (substr($row['amount'], 0, 1) === '-') ? 'red' : 'green';
+                        ?>;"><?= $row['amount'] ?></td>
                     </tr>
                 <?php
                 endforeach;
@@ -71,15 +63,17 @@
             <tfoot>
                 <tr>
                     <th colspan=" 3">Total Income:</th>
-                    <td><!-- TODO --></td>
+                    <td><?= $totalIncome ?></td>
                 </tr>
                 <tr>
                     <th colspan="3">Total Expense:</th>
-                    <td><!-- TODO --></td>
+                    <td><?= $totalExpense ?></td>
+
                 </tr>
                 <tr>
                     <th colspan="3">Net Total:</th>
-                    <td><!-- TODO --></td>
+                    <td><?= $netTotal ?></td>
+
                 </tr>
             </tfoot>
         </table>
